@@ -6,14 +6,16 @@
 
 Команда: 
 ```
-foreach ($algo in @("MD5", "SHA1", "SHA256", "SHA384", "SHA512")) {
-    $hash = Get-FileHash -Path $filePath -Algorithm $algo
-    Write-Output "$($algo): $($hash.Hash)"
+$files = @("04", "08")
+
+foreach ($file in $files) {
+    Write-Output "`nКонтрольные суммы файла $file ==="
+    foreach ($algo in @("MD5", "SHA1", "SHA256", "SHA384", "SHA512")) {
+        $hash = Get-FileHash -Path $file -Algorithm $algo
+        Write-Output "$($algo): $($hash.Hash)"
+    }
 }
 ```
 
 Результат: 
-- 04: 
-![1.1](images/1.1.jpg)
-- 08: 
-![1.2](images/1.2.jpg)
+![Hash sums](images/1.jpg)
