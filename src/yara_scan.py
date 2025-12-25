@@ -57,7 +57,6 @@ def scan_directory(root_path, rules):
     for dirpath, _, filenames in os.walk(root_path):
         for filename in filenames:
             filepath = os.path.join(dirpath, filename)
-            # Пропускаем файлы без чтения (например, слишком большие или специальные)
             if os.path.isfile(filepath):
                 scan_file(filepath, rules)
 
